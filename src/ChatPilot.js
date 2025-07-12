@@ -238,7 +238,7 @@
 
     getThemeURL() {
       // For CDN deployment, use absolute URLs
-      const baseURL = this.config.cdnBase || 'https://cdn.jsdelivr.net/npm/chatpilot-widget@1.0.1';
+      const baseURL = this.config.cdnBase || 'https://cdn.jsdelivr.net/npm/chatpilot@1.1.0';
       return `${baseURL}/styles/themes/${this.config.theme}.css`;
     }
 

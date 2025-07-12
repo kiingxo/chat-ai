@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ChatPilot Demo - Production Ready</title>
-  <script src="../src/ChatPilot.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chatpilot@1.1.0/dist/ChatPilot.min.js"></script>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -57,8 +57,8 @@
     <h2>✨ Features Showcase</h2>
     <div class="feature-grid">
       <div class="feature-card">
-        <h3>🎨 5 Beautiful Themes</h3>
-        <p>Default, Dark, Minimal, Gradient, and Rounded themes</p>
+        <h3>🎨 8 Beautiful Themes</h3>
+        <p>Default, Dark, Neon, Glass, Corporate, Minimal, Gradient, and Rounded themes</p>
       </div>
       <div class="feature-card">
         <h3>🤖 Multi-Provider Support</h3>
@@ -140,11 +140,20 @@ document.addEventListener('chatpilot:error', (e) => {
     <h2>🎨 Theme Examples</h2>
     <p>Try different themes by changing the configuration:</p>
     <div class="code-block">
-// Default theme (clean blue)
+// Default theme (modern gradient)
 ChatPilot.init({ theme: 'default', ...config });
 
 // Dark theme (sleek dark interface)
 ChatPilot.init({ theme: 'dark', ...config });
+
+// Neon theme (cyberpunk vibrant)
+ChatPilot.init({ theme: 'neon', ...config });
+
+// Glass theme (modern glassmorphism)
+ChatPilot.init({ theme: 'glass', ...config });
+
+// Corporate theme (professional business)
+ChatPilot.init({ theme: 'corporate', ...config });
 
 // Minimal theme (simple and clean)
 ChatPilot.init({ theme: 'minimal', ...config });
@@ -183,10 +192,10 @@ ngOnInit() {
     <p>Deploy ChatPilot via CDN for optimal performance:</p>
     <div class="code-block">
 <!-- Via jsDelivr -->
-&lt;script src="https://cdn.jsdelivr.net/npm/chatpilot@1.0.0/src/ChatPilot.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/chatpilot@1.1.0/dist/ChatPilot.min.js"&gt;&lt;/script&gt;
 
 <!-- Via unpkg -->
-&lt;script src="https://unpkg.com/chatpilot@1.0.0/src/ChatPilot.js"&gt;&lt;/script&gt;
+&lt;script src="https://unpkg.com/chatpilot@1.1.0/dist/ChatPilot.min.js"&gt;&lt;/script&gt;
     </div>
   </div>
 
@@ -196,15 +205,15 @@ ngOnInit() {
     // Initialize ChatPilot with comprehensive configuration
     const chat = ChatPilot.init({
       apiKey: 'AIzaSyDBzL5azfOmQDvpECqn0MgSn-j3n9S37-s',
-      assistantName: 'Lexi',
-      theme: 'neon',
+      assistantName: 'kiing',
+      theme: 'minimal',
       provider: 'gemini',
       model: 'gemini-1.5-flash',
       maxTokens: 150,
       temperature: 0.7,
       showTypingIndicator: true,
       enableMarkdown: false,
-      data: 'Welcome to TechFlow! We sell wireless chargers, earbuds, and travel adapters. Orders ship in 2-4 days. Contact us via hello@techflow.com.',
+      data: '',
       onMessage: (userMsg, aiResponse) => {
         console.log('Message exchanged:', { user: userMsg, ai: aiResponse });
         addStatus('Message sent and received successfully', 'success');
@@ -288,6 +297,9 @@ demoChat.getHistory()
 demoChat.clearHistory()
 
 // Change theme
+demoChat.changeTheme('neon')
+demoChat.changeTheme('glass')
+demoChat.changeTheme('corporate')
 demoChat.changeTheme('gradient')
 demoChat.changeTheme('minimal')
 demoChat.changeTheme('rounded')

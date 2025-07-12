@@ -4,7 +4,7 @@ A lightweight, customizable AI chat widget for websites. ChatPilot injects a flo
 
 ## ✨ Features
 
-- 🎨 **5 Beautiful Themes**: Default, Dark, Minimal, Gradient, and Rounded
+- 🎨 **8 Beautiful Themes**: Default, Dark, Minimal, Gradient, Rounded, Neon, Glass, and Corporate
 - 🤖 **Multi-Provider Support**: OpenAI GPT and Google Gemini
 - 📱 **Mobile Responsive**: Works perfectly on all devices
 - ⚡ **Lightweight**: No dependencies, pure vanilla JavaScript
@@ -13,6 +13,7 @@ A lightweight, customizable AI chat widget for websites. ChatPilot injects a flo
 - 📊 **Event System**: Built-in event handling and callbacks
 - 🛡️ **Error Handling**: Robust error handling and user feedback
 - 🚀 **CDN Ready**: Deploy via jsDelivr, unpkg, or self-hosted
+- 📋 **Data Templates**: Pre-built templates for different business types
 
 ## 🚀 Quick Start
 
@@ -187,13 +188,13 @@ chat.destroy();
 ### Static Methods
 ```javascript
 // Get available themes
-console.log(ChatPilot.themes); // ['default', 'dark', 'minimal', 'gradient', 'rounded']
+console.log(ChatPilot.themes); // ['default', 'dark', 'minimal', 'gradient', 'rounded', 'neon', 'glass', 'corporate']
 
 // Get default configuration
 console.log(ChatPilot.defaults);
 
 // Get version
-console.log(ChatPilot.version); // '1.0.0'
+console.log(ChatPilot.version); // '1.1.0'
 ```
 
 ## 🔌 Framework Integration
@@ -253,6 +254,33 @@ export class AppComponent implements OnInit {
 }
 ```
 
+## 📋 Data Templates
+
+ChatPilot includes pre-built data templates for different business types to help you get started quickly:
+
+### Available Templates
+- 🏢 **Company Profile**: E-commerce, service businesses
+- 🍽️ **Restaurant Profile**: Restaurants, cafes, food delivery
+- 🏥 **Healthcare Profile**: Medical practices, clinics
+- 🏠 **Real Estate Profile**: Real estate agencies, property management
+
+### Quick Template Usage
+```html
+<!-- Include template -->
+<script src="templates/company-profile.js"></script>
+
+<!-- Initialize with template data -->
+<script>
+ChatPilot.init({
+    apiKey: 'your-api-key',
+    data: formatCompanyData(), // Template format function
+    assistantName: 'Customer Support'
+});
+</script>
+```
+
+See [templates/README.md](templates/README.md) for detailed template documentation and customization guides.
+
 ## 📦 Installation
 
 ### NPM
@@ -269,12 +297,13 @@ yarn add chatpilot
 1. Download the latest release
 2. Include `ChatPilot.js` in your HTML
 3. Copy theme CSS files to your project
+4. Include template files if needed
 
 ## 🚀 Deployment
 
 ### CDN (Recommended)
 ```html
-<script src="https://cdn.jsdelivr.net/npm/chatpilot@1.0.0/src/ChatPilot.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chatpilot@1.1.0/dist/ChatPilot.min.js"></script>
 ```
 
 ### Self-Hosted

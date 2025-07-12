@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatPilot Data Templates Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .template-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .template-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .template-card.active {
+            border-color: #667eea;
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+        }
+
+        .template-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .template-icon {
+            font-size: 2.5em;
+            margin-right: 15px;
+        }
+
+        .template-info h3 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 1.3em;
+        }
+
+        .template-info p {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        .template-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .template-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .template-features li {
+            padding: 5px 0;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .template-features li::before {
+            content: '✓';
+            color: #27ae60;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .template-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .template-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .template-button.active {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+        }
+
+        .demo-section {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+
+        .demo-section h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .demo-section p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .demo-controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .demo-button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .demo-button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .demo-button.secondary {
+            background: #95a5a6;
+        }
+
+        .demo-button.secondary:hover {
+            background: #7f8c8d;
+        }
+
+        .current-template {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .current-template strong {
+            color: #2c3e50;
+        }
+
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .template-preview {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .template-preview h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .template-preview p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .template-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .demo-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 ChatPilot Data Templates</h1>
+        <p class="subtitle">Pre-built, customizable data templates for different business types</p>
+
+        <div class="template-grid">
+            <!-- Company Profile Template -->
+            <div class="template-card" data-template="company">
+                <div class="template-header">
+                    <div class="template-icon">🏢</div>
+                    <div class="template-info">
+                        <h3>Company Profile</h3>
+                        <p>Business & E-commerce</p>
+                    </div>
+                </div>
+                <p class="template-description">
+                    Complete company profile with products, services, shipping info, customer support, and FAQs. Perfect for online stores and service businesses.
+                </p>
+                <ul class="template-features">
+                    <li>Company information & contact details</li>
+                    <li>Products & services catalog</li>
+                    <li>Shipping & return policies</li>
+                    <li>Customer support information</li>
+                    <li>Frequently asked questions</li>
+                    <li>Business hours & social media</li>
+                </ul>
+                <button class="template-button" onclick="loadTemplate('company')">Use This Template</button>
+            </div>
+
+            <!-- Restaurant Profile Template -->
+            <div class="template-card" data-template="restaurant">
+                <div class="template-header">
+                    <div class="template-icon">🍽️</div>
+                    <div class="template-info">
+                        <h3>Restaurant Profile</h3>
+                        <p>Food & Dining</p>
+                    </div>
+                </div>
+                <p class="template-description">
+                    Comprehensive restaurant template with menu, hours, reservations, dietary accommodations, and dining information.
+                </p>
+                <ul class="template-features">
+                    <li>Restaurant information & cuisine</li>
+                    <li>Complete menu with prices</li>
+                    <li>Operating hours & reservations</li>
+                    <li>Dietary accommodations</li>
+                    <li>Special services & events</li>
+                    <li>Parking & accessibility info</li>
+                </ul>
+                <button class="template-button" onclick="loadTemplate('restaurant')">Use This Template</button>
+            </div>
+
+            <!-- Healthcare Profile Template -->
+            <div class="template-card" data-template="healthcare">
+                <div class="template-header">
+                    <div class="template-icon">🏥</div>
+                    <div class="template-info">
+                        <h3>Healthcare Profile</h3>
+                        <p>Medical & Wellness</p>
+                    </div>
+                </div>
+                <p class="template-description">
+                    Medical practice template with services, insurance, appointments, staff information, and patient resources.
+                </p>
+                <ul class="template-features">
+                    <li>Practice information & services</li>
+                    <li>Medical staff profiles</li>
+                    <li>Insurance & payment options</li>
+                    <li>Appointment scheduling</li>
+                    <li>COVID-19 protocols</li>
+                    <li>Patient resources & FAQs</li>
+                </ul>
+                <button class="template-button" onclick="loadTemplate('healthcare')">Use This Template</button>
+            </div>
+
+            <!-- Real Estate Profile Template -->
+            <div class="template-card" data-template="realestate">
+                <div class="template-header">
+                    <div class="template-icon">🏠</div>
+                    <div class="template-info">
+                        <h3>Real Estate Profile</h3>
+                        <p>Property & Real Estate</p>
+                    </div>
+                </div>
+                <p class="template-description">
+                    Real estate agency template with properties, agents, market information, financing, and buying/selling guidance.
+                </p>
+                <ul class="template-features">
+                    <li>Agency information & services</li>
+                    <li>Featured properties listing</li>
+                    <li>Real estate agents profiles</li>
+                    <li>Market trends & statistics</li>
+                    <li>Financing partners & services</li>
+                    <li>Community involvement</li>
+                </ul>
+                <button class="template-button" onclick="loadTemplate('realestate')">Use This Template</button>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>🎯 Interactive Demo</h2>
+            <p>Try different templates and see how ChatPilot adapts to provide relevant information!</p>
+            
+            <div class="current-template">
+                <strong>Current Template:</strong> <span id="current-template-display">None Selected</span>
+            </div>
+
+            <div class="demo-controls">
+                <button class="demo-button" onclick="ChatPilot.open()">Open Chat</button>
+                <button class="demo-button secondary" onclick="ChatPilot.close()">Close Chat</button>
+                <button class="demo-button secondary" onclick="clearChat()">Clear History</button>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>💻 Integration Code</h2>
+            <p>Here's how to integrate these templates with ChatPilot:</p>
+            
+            <div class="code-example">
+// 1. Include the template file
+&lt;script src="templates/company-profile.js"&gt;&lt;/script&gt;
+
+// 2. Initialize ChatPilot with template data
+ChatPilot.init({
+    apiKey: 'your-api-key-here',
+    provider: 'gemini',
+    theme: 'default',
+    data: formatCompanyData(), // Use the template's format function
+    assistantName: 'Customer Support',
+    welcomeMessage: 'Hello! I can help you with information about our company, products, and services.'
+});
+            </div>
+        </div>
+
+        <div class="template-preview" id="template-preview">
+            <h4>Template Preview</h4>
+            <p>Select a template above to see a preview of the data structure and sample content.</p>
+        </div>
+
+        <div class="demo-section">
+            <h2>🚀 Quick Start Guide</h2>
+            <p>Follow these steps to use data templates with ChatPilot:</p>
+            
+            <div class="code-example">
+1. Choose a template that matches your business type
+2. Download the template file (e.g., company-profile.js)
+3. Customize the data with your business information
+4. Include the template file in your HTML
+5. Use the format function in ChatPilot initialization
+6. Test and refine the responses
+            </div>
+        </div>
+    </div>
+
+    <!-- ChatPilot Widget -->
+    <script src="https://cdn.jsdelivr.net/npm/chatpilot@1.1.0/dist/ChatPilot.min.js"></script>
+    
+    <!-- Template Files -->
+    <script src="templates/company-profile.js"></script>
+    <script src="templates/restaurant-profile.js"></script>
+    <script src="templates/healthcare-profile.js"></script>
+    <script src="templates/real-estate-profile.js"></script>
+    
+    <script>
+        let currentTemplate = null;
+        let chatInstance = null;
+
+        // Template data mapping
+        const templateData = {
+            company: {
+                name: 'Company Profile',
+                formatFunction: formatCompanyData,
+                description: 'TechFlow - Leading provider of wireless charging solutions and smart electronics for modern lifestyles.',
+                sampleQuestions: [
+                    'What products do you sell?',
+                    'What is your shipping policy?',
+                    'How can I contact customer support?',
+                    'What is your return policy?'
+                ]
+            },
+            restaurant: {
+                name: 'Restaurant Profile',
+                formatFunction: formatRestaurantData,
+                description: 'Bella Vista - Authentic Italian and Mediterranean cuisine in an elegant, family-friendly atmosphere.',
+                sampleQuestions: [
+                    'What is on your menu?',
+                    'Do you take reservations?',
+                    'What are your hours?',
+                    'Do you offer delivery?'
+                ]
+            },
+            healthcare: {
+                name: 'Healthcare Profile',
+                formatFunction: formatHealthcareData,
+                description: 'Wellness Medical Center - Comprehensive primary care and family medicine practice providing personalized healthcare for all ages.',
+                sampleQuestions: [
+                    'What services do you offer?',
+                    'How do I schedule an appointment?',
+                    'What insurance do you accept?',
+                    'Do you offer virtual appointments?'
+                ]
+            },
+            realestate: {
+                name: 'Real Estate Profile',
+                formatFunction: formatRealEstateData,
+                description: 'Premier Real Estate Group - Specializing in residential and commercial properties with personalized service and local market expertise.',
+                sampleQuestions: [
+                    'What properties do you have available?',
+                    'How do I start the home buying process?',
+                    'What are current market conditions?',
+                    'Who are your agents?'
+                ]
+            }
+        };
+
+        // Load template function
+        function loadTemplate(templateKey) {
+            currentTemplate = templateKey;
+            const template = templateData[templateKey];
+            
+            // Update UI
+            document.querySelectorAll('.template-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            document.querySelector(`[data-template="${templateKey}"]`).classList.add('active');
+            
+            document.getElementById('current-template-display').textContent = template.name;
+            
+            // Update template preview
+            const preview = document.getElementById('template-preview');
+            preview.innerHTML = `
+                <h4>${template.name} Template</h4>
+                <p><strong>Description:</strong> ${template.description}</p>
+                <p><strong>Sample Questions:</strong></p>
+                <ul>
+                    ${template.sampleQuestions.map(q => `<li>${q}</li>`).join('')}
+                </ul>
+            `;
+            
+            // Reinitialize ChatPilot with new template data
+            initChatPilot(templateKey);
+            
+            // Show success message
+            const button = event.target;
+            const originalText = button.textContent;
+            button.textContent = 'Template Loaded!';
+            button.classList.add('active');
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.classList.remove('active');
+            }, 2000);
+        }
+
+        // Initialize ChatPilot
+        function initChatPilot(templateKey = null) {
+            if (chatInstance) {
+                chatInstance.destroy();
+            }
+
+            let data = '';
+            let assistantName = 'AI Assistant';
+            let welcomeMessage = 'Hello! How can I help you today?';
+
+            if (templateKey && templateData[templateKey]) {
+                const template = templateData[templateKey];
+                data = template.formatFunction();
+                assistantName = template.name + ' Assistant';
+                welcomeMessage = `Hello! I'm your ${template.name} assistant. I can help you with information about our business, services, and answer your questions.`;
+            }
+
+            chatInstance = ChatPilot.init({
+                apiKey: 'demo-key', // Replace with your actual API key
+                provider: 'gemini',
+                theme: 'default',
+                data: data,
+                assistantName: assistantName,
+                welcomeMessage: welcomeMessage,
+                placeholder: 'Ask me anything about our business...',
+                onOpen: function() {
+                    console.log('Chat opened with template:', templateKey);
+                },
+                onClose: function() {
+                    console.log('Chat closed');
+                },
+                onMessage: function(message) {
+                    console.log('Message sent:', message);
+                },
+                onResponse: function(response) {
+                    console.log('AI response:', response);
+                },
+                onError: function(error) {
+                    console.error('ChatPilot error:', error);
+                    alert('Please add your API key to test the chat functionality!');
+                }
+            });
+        }
+
+        // Clear chat history
+        function clearChat() {
+            if (chatInstance) {
+                chatInstance.clearHistory();
+                console.log('Chat history cleared');
+            }
+        }
+
+        // Initialize with no template
+        document.addEventListener('DOMContentLoaded', function() {
+            initChatPilot();
+        });
+    </script>
+</body>
+</html> 

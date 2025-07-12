@@ -4,9 +4,10 @@
   "description": "A lightweight, customizable AI chat widget for websites",
   "main": "src/ChatPilot.js",
   "scripts": {
-    "build": "npm run build:js && npm run build:css",
+    "build": "npm run build:js && npm run build:css && npm run build:templates",
     "build:js": "uglifyjs src/ChatPilot.js -o dist/ChatPilot.min.js --compress --mangle",
     "build:css": "mkdir -p dist/styles/themes && cp styles/themes/*.css dist/styles/themes/",
+    "build:templates": "mkdir -p dist/templates && cp templates/*.js dist/templates/ && cp templates/README.md dist/templates/",
     "dev": "npm run build && python -m http.server 8000",
     "test": "echo \"No tests specified\" && exit 0",
     "lint": "eslint src/ChatPilot.js",
@@ -36,6 +37,7 @@
     "src/",
     "styles/",
     "dist/",
+    "templates/",
     "README.md"
   ],
   "devDependencies": {
