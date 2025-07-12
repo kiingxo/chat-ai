@@ -1,6 +1,6 @@
 {
   "name": "chatpilot",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A powerful AI-powered customer service and website assistance solution for businesses",
   "main": "src/ChatPilot.js",
   "scripts": {

@@ -1,6 +1,10 @@
 # ChatPilot 🤖
 
+[![Built by BlueprintLabs](https://img.shields.io/badge/built%20by-BlueprintLabs-0057ff?style=flat-square)](https://github.com/kiingxo)
+
 A powerful AI-powered customer service and website assistance solution. ChatPilot transforms your website with an intelligent floating chat interface that provides instant customer support, answers questions, and guides visitors using AI models (OpenAI GPT or Google Gemini) with your own API keys.
+
+**Built with ❤️ by [BlueprintLabs](https://github.com/kiingxo)**
 
 ## ✨ Features
 
@@ -384,11 +388,21 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 - 📧 Email: israelsoyombo@gmail.com
 - 🐛 Issues: [GitHub Issues](https://github.com/kiingxo/chat-ai/issues)
-- 📖 Docs: [Documentation](https://chatpilot.com/docs)
+- 📖 Docs: [Documentation](https://github.com/kiingxo/chat-ai#readme)
 - 💬 Community: [GitHub Discussions](https://github.com/kiingxo/chat-ai/discussions)
 
 ---
 
 **Transform your website into a 24/7 customer service powerhouse with ChatPilot!** 🚀
 
-Made with ❤️ by [Israel Soyombo (kiingxo)](https://github.com/kiingxo) © 2025 
+---
+
+<div align="center">
+
+**Built with ❤️ by [BlueprintLabs](https://github.com/kiingxo)**
+
+[![BlueprintLabs](https://img.shields.io/badge/BlueprintLabs-AI%20Solutions-0057ff?style=for-the-badge&logo=blueprintlabs)](https://github.com/kiingxo)
+
+*Empowering businesses with intelligent AI solutions*
+
+</div> 
