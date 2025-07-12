@@ -1,6 +1,6 @@
 # ChatPilot 🤖
 
-A lightweight, customizable AI chat widget for websites. ChatPilot injects a floating chat bubble that allows users to interact with AI models (OpenAI GPT or Google Gemini) using your own API keys.
+A powerful AI-powered customer service and website assistance solution. ChatPilot transforms your website with an intelligent floating chat interface that provides instant customer support, answers questions, and guides visitors using AI models (OpenAI GPT or Google Gemini) with your own API keys.
 
 ## ✨ Features
 
@@ -21,7 +21,7 @@ A lightweight, customizable AI chat widget for websites. ChatPilot injects a flo
 
 ```html
 <!-- Via CDN (recommended) -->
-<script src="https://cdn.jsdelivr.net/npm/chatpilot@1.0.0/src/ChatPilot.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chatpilot@1.1.0/dist/ChatPilot.min.js"></script>
 
 <!-- Or self-hosted -->
 <script src="path/to/ChatPilot.js"></script>
@@ -32,9 +32,9 @@ A lightweight, customizable AI chat widget for websites. ChatPilot injects a flo
 ```javascript
 ChatPilot.init({
   apiKey: 'your-api-key-here',
-  assistantName: 'Lexi',
-  data: 'We sell phone accessories and ship globally.',
-  theme: 'dark'
+  assistantName: 'Customer Support',
+  data: 'We sell phone accessories and ship globally. Our customer service team is available 24/7.',
+  theme: 'default'
 });
 ```
 
@@ -110,7 +110,9 @@ ChatPilot.init({
   provider: 'openai',
   model: 'gpt-3.5-turbo',
   maxTokens: 200,
-  temperature: 0.8
+  temperature: 0.8,
+  assistantName: 'Customer Support',
+  data: 'Your company information, products, services, and policies...'
 });
 ```
 
@@ -121,7 +123,9 @@ ChatPilot.init({
   provider: 'gemini',
   model: 'gemini-1.5-flash',
   maxTokens: 150,
-  temperature: 0.7
+  temperature: 0.7,
+  assistantName: 'Website Assistant',
+  data: 'Your business context and customer service information...'
 });
 ```
 
@@ -143,23 +147,27 @@ ChatPilot.init({
 ```javascript
 const chat = ChatPilot.init({
   onMessage: (userMessage, aiResponse) => {
-    console.log('User:', userMessage);
-    console.log('AI:', aiResponse);
+    console.log('Customer Question:', userMessage);
+    console.log('AI Response:', aiResponse);
+    // Track customer interactions for analytics
   },
   onError: (error) => {
     console.error('ChatPilot error:', error);
+    // Handle customer service errors gracefully
   },
   onOpen: () => {
-    console.log('Chat opened');
+    console.log('Customer support chat opened');
+    // Track when customers start conversations
   },
   onClose: () => {
-    console.log('Chat closed');
+    console.log('Customer support chat closed');
+    // Track conversation completion
   }
 });
 
 // Listen to custom events
 document.addEventListener('chatpilot:ready', (e) => {
-  console.log('ChatPilot is ready!', e.detail.instance);
+  console.log('Customer service assistant is ready!', e.detail.instance);
 });
 ```
 
@@ -207,8 +215,9 @@ function App() {
   useEffect(() => {
     ChatPilot.init({
       apiKey: process.env.REACT_APP_API_KEY,
-      assistantName: 'React Assistant',
-      theme: 'dark'
+      assistantName: 'Customer Support',
+      theme: 'default',
+      data: 'Your company information and customer service policies...'
     });
   }, []);
 
@@ -227,8 +236,9 @@ export default {
   mounted() {
     ChatPilot.init({
       apiKey: this.$env.API_KEY,
-      assistantName: 'Vue Assistant',
-      theme: 'gradient'
+      assistantName: 'Website Assistant',
+      theme: 'gradient',
+      data: 'Your business context and customer service information...'
     });
   }
 }
@@ -247,8 +257,9 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     (window as any).ChatPilot.init({
       apiKey: environment.apiKey,
-      assistantName: 'Angular Assistant',
-      theme: 'rounded'
+      assistantName: 'Customer Service',
+      theme: 'rounded',
+      data: 'Your company details and customer support information...'
     });
   }
 }
@@ -256,13 +267,13 @@ export class AppComponent implements OnInit {
 
 ## 📋 Data Templates
 
-ChatPilot includes pre-built data templates for different business types to help you get started quickly:
+ChatPilot includes pre-built data templates for different business types to help you create intelligent customer service assistants quickly:
 
 ### Available Templates
-- 🏢 **Company Profile**: E-commerce, service businesses
-- 🍽️ **Restaurant Profile**: Restaurants, cafes, food delivery
-- 🏥 **Healthcare Profile**: Medical practices, clinics
-- 🏠 **Real Estate Profile**: Real estate agencies, property management
+- 🏢 **Company Profile**: E-commerce, service businesses, online stores
+- 🍽️ **Restaurant Profile**: Restaurants, cafes, food delivery services
+- 🏥 **Healthcare Profile**: Medical practices, clinics, wellness centers
+- 🏠 **Real Estate Profile**: Real estate agencies, property management companies
 
 ### Quick Template Usage
 ```html
@@ -274,7 +285,8 @@ ChatPilot includes pre-built data templates for different business types to help
 ChatPilot.init({
     apiKey: 'your-api-key',
     data: formatCompanyData(), // Template format function
-    assistantName: 'Customer Support'
+    assistantName: 'Customer Support',
+    welcomeMessage: 'Hello! I can help you with information about our company, products, and services.'
 });
 </script>
 ```
@@ -317,6 +329,18 @@ npm install
 npm run build
 ```
 
+### Customer Service Integration
+```javascript
+// Initialize with customer service context
+ChatPilot.init({
+  apiKey: 'your-api-key',
+  assistantName: 'Customer Support',
+  data: 'Your company information, products, services, policies, and FAQs...',
+  welcomeMessage: 'Hello! I\'m here to help you with any questions about our products and services.',
+  theme: 'default'
+});
+```
+
 ## 🔒 Security
 
 - API keys are stored in memory only
@@ -328,17 +352,18 @@ npm run build
 
 ### Common Issues
 
-1. **Chat doesn't appear**: Check if the script is loaded and `ChatPilot.init()` is called
+1. **Customer service chat doesn't appear**: Check if the script is loaded and `ChatPilot.init()` is called
 2. **API errors**: Verify your API key and provider settings
 3. **Styling issues**: Ensure theme CSS files are accessible
 4. **Mobile issues**: Check responsive design settings
+5. **Template data not loading**: Verify template files are included and format functions are called
 
 ### Debug Mode
 ```javascript
 ChatPilot.init({
   // ... your config
   onError: (error) => {
-    console.error('ChatPilot Debug:', error);
+    console.error('Customer Service Assistant Debug:', error);
   }
 });
 ```
@@ -360,7 +385,10 @@ MIT License - see [LICENSE](LICENSE) file for details.
 - 📧 Email: israelsoyombo@gmail.com
 - 🐛 Issues: [GitHub Issues](https://github.com/kiingxo/chat-ai/issues)
 - 📖 Docs: [Documentation](https://chatpilot.com/docs)
+- 💬 Community: [GitHub Discussions](https://github.com/kiingxo/chat-ai/discussions)
 
 ---
+
+**Transform your website into a 24/7 customer service powerhouse with ChatPilot!** 🚀
 
 Made with ❤️ by [Israel Soyombo (kiingxo)](https://github.com/kiingxo) © 2025 
