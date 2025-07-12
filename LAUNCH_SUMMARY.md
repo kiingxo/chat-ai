@@ -242,4 +242,4 @@ ChatPilot is now a **production-ready, enterprise-grade chat widget** that can c
 
 **Good luck with your launch!** 🎉
 
-*ChatPilot Team* 
+*Israel Soyombo (kiingxo)* 

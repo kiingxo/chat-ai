@@ -46,7 +46,7 @@ ChatPilot.init({
 
 ### 3. **Direct Download**
 
-1. Download from [GitHub Releases](https://github.com/your-username/chatpilot/releases)
+1. Download from [GitHub Releases](https://github.com/kiingxo/chat-ai/releases)
 2. Include `ChatPilot.js` in your project
 3. Copy theme CSS files to your styles folder
 
@@ -320,10 +320,10 @@ if (window.location.hostname === 'yourdomain.com') {
 
 ## 📞 **Support & Resources**
 
-- 📖 **Documentation**: [GitHub README](https://github.com/your-username/chatpilot)
-- 🐛 **Issues**: [GitHub Issues](https://github.com/your-username/chatpilot/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/your-username/chatpilot/discussions)
-- 📧 **Email**: support@chatpilot.com
+- 📖 **Documentation**: [GitHub README](https://github.com/kiingxo/chat-ai)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/kiingxo/chat-ai/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/kiingxo/chat-ai/discussions)
+- 📧 **Email**: israelsoyombo@gmail.com
 
 ## 🎉 **You're Ready to Go!**
 

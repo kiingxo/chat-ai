@@ -2,6 +2,7 @@
  * ChatPilot - AI Chat Widget
  * A lightweight, customizable chat widget for websites
  * @version 1.0.0
+ * @year 2025
  * @license MIT
  */
 

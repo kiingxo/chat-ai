@@ -22,16 +22,16 @@
     "customer-support",
     "javascript"
   ],
-  "author": "ChatPilot Team",
+  "author": "Israel Soyombo (kiingxo) <israelsoyombo@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/chatpilot.git"
+    "url": "https://github.com/kiingxo/chat-ai.git"
   },
   "bugs": {
-    "url": "https://github.com/your-username/chatpilot/issues"
+    "url": "https://github.com/kiingxo/chat-ai/issues"
   },
-  "homepage": "https://github.com/your-username/chatpilot#readme",
+  "homepage": "https://github.com/kiingxo/chat-ai#readme",
   "files": [
     "src/",
     "styles/",

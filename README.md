@@ -328,10 +328,10 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## 🆘 Support
 
-- 📧 Email: support@chatpilot.com
-- 🐛 Issues: [GitHub Issues](https://github.com/your-username/chatpilot/issues)
+- 📧 Email: israelsoyombo@gmail.com
+- 🐛 Issues: [GitHub Issues](https://github.com/kiingxo/chat-ai/issues)
 - 📖 Docs: [Documentation](https://chatpilot.com/docs)
 
 ---
 
-Made with ❤️ by the ChatPilot Team 
+Made with ❤️ by [Israel Soyombo (kiingxo)](https://github.com/kiingxo) © 2025 
