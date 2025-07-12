@@ -1,0 +1,5 @@
+# GitHub Pages configuration
+# This file tells GitHub Pages to use the docs folder as the source
+source:
+  branch: main
+  path: /docs 
