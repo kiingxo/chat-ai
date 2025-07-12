@@ -32,11 +32,14 @@
 
   // Theme configurations
   const THEMES = {
-    default: { icon: '💬', color: '#0057ff' },
-    dark: { icon: '🌙', color: '#00d4ff' },
+    default: { icon: '💬', color: '#667eea' },
+    dark: { icon: '🌙', color: '#06b6d4' },
     minimal: { icon: '•', color: '#333' },
     gradient: { icon: '✨', color: '#667eea' },
-    rounded: { icon: '💭', color: '#4CAF50' }
+    rounded: { icon: '💭', color: '#4CAF50' },
+    neon: { icon: '⚡', color: '#ff0080' },
+    glass: { icon: '🔮', color: '#ffffff' },
+    corporate: { icon: '💼', color: '#2c3e50' }
   };
 
   // API endpoints
@@ -235,7 +238,7 @@
 
     getThemeURL() {
       // For CDN deployment, use absolute URLs
-      const baseURL = this.config.cdnBase || 'https://cdn.jsdelivr.net/npm/chatpilot@1.0.0';
+      const baseURL = this.config.cdnBase || 'https://cdn.jsdelivr.net/npm/chatpilot-widget@1.0.1';
       return `${baseURL}/styles/themes/${this.config.theme}.css`;
     }
 
@@ -257,10 +260,13 @@
     panel.innerHTML = `
         <div class="chat-header">
           <span class="assistant-name">${this.config.assistantName}</span>
+          <button class="close-button" id="close-button">×</button>
         </div>
         <div class="chat-messages" id="chat-messages">
           <div class="typing-indicator" id="typing-indicator">
-            ${this.config.assistantName} is typing...
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
           </div>
         </div>
         <div class="chat-input-container">
@@ -284,11 +290,16 @@
       this.input = panel.querySelector('#chat-input');
       this.sendButton = panel.querySelector('#send-button');
       this.typingIndicator = panel.querySelector('#typing-indicator');
+      this.closeButton = panel.querySelector('#close-button');
     }
 
     bindEvents() {
       // Bubble click
       this.bubble.addEventListener('click', () => this.toggle());
+
+      // Close button
+      const closeButton = this.panel.querySelector('#close-button');
+      closeButton.addEventListener('click', () => this.close());
 
       // Input events
       this.input.addEventListener('keydown', (e) => {
@@ -547,7 +558,9 @@
       this.messageHistory = [];
       this.messagesContainer.innerHTML = `
         <div class="typing-indicator" id="typing-indicator">
-          ${this.config.assistantName} is typing...
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
         </div>
       `;
       this.typingIndicator = this.messagesContainer.querySelector('#typing-indicator');
