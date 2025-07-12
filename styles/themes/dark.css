@@ -1,0 +1,129 @@
+#chatpilot-bubble {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #1a1a1a;
+  color: #00d4ff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 1000;
+  font-size: 24px;
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+  transition: all 0.3s ease;
+  border: 2px solid #00d4ff;
+}
+
+#chatpilot-bubble:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 30px rgba(0, 212, 255, 0.5);
+  background: #00d4ff;
+  color: #1a1a1a;
+}
+
+#chatpilot-panel {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 350px;
+  max-height: 500px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 0;
+  display: none;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  z-index: 1000;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+#chatpilot-panel.open {
+  display: flex;
+}
+
+.chat-header {
+  background: #2d2d2d;
+  color: #00d4ff;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  border-bottom: 1px solid #333;
+}
+
+.assistant-name {
+  font-size: 16px;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  max-height: 300px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #e0e0e0;
+}
+
+.chat-input-container {
+  padding: 16px 20px;
+  border-top: 1px solid #333;
+  display: flex;
+  gap: 8px;
+  background: #2d2d2d;
+}
+
+#chat-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  background: #1a1a1a;
+  color: #e0e0e0;
+  transition: border-color 0.3s ease;
+}
+
+#chat-input:focus {
+  border-color: #00d4ff;
+}
+
+#chat-input::placeholder {
+  color: #666;
+}
+
+#send-button {
+  background: #00d4ff;
+  color: #1a1a1a;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+#send-button:hover {
+  background: #00b8e6;
+  transform: translateY(-1px);
+}
+
+.message {
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #2d2d2d;
+  border-left: 3px solid #00d4ff;
+}
+
+.message strong {
+  color: #00d4ff;
+  margin-right: 8px;
+} 

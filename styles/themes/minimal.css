@@ -1,0 +1,125 @@
+#chatpilot-bubble {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: white;
+  color: #333;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 1000;
+  font-size: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  border: 1px solid #e0e0e0;
+}
+
+#chatpilot-bubble:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+#chatpilot-panel {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 320px;
+  max-height: 450px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 0;
+  display: none;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+#chatpilot-panel.open {
+  display: flex;
+}
+
+.chat-header {
+  background: #f8f9fa;
+  color: #333;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.assistant-name {
+  font-size: 14px;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  max-height: 280px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #333;
+}
+
+.chat-input-container {
+  padding: 12px 16px;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  gap: 6px;
+  background: #f8f9fa;
+}
+
+#chat-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+  outline: none;
+  background: white;
+  transition: border-color 0.2s ease;
+}
+
+#chat-input:focus {
+  border-color: #666;
+}
+
+#send-button {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+#send-button:hover {
+  background: #555;
+}
+
+.message {
+  margin-bottom: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.message:last-child {
+  border-bottom: none;
+}
+
+.message strong {
+  color: #333;
+  margin-right: 6px;
+  font-weight: 600;
+} 

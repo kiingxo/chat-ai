@@ -1,0 +1,54 @@
+{
+  "name": "chatpilot",
+  "version": "1.0.0",
+  "description": "A lightweight, customizable AI chat widget for websites",
+  "main": "src/ChatPilot.js",
+  "scripts": {
+    "build": "npm run build:js && npm run build:css",
+    "build:js": "uglifyjs src/ChatPilot.js -o dist/ChatPilot.min.js --compress --mangle",
+    "build:css": "mkdir -p dist/styles/themes && cp styles/themes/*.css dist/styles/themes/",
+    "dev": "npm run build && python -m http.server 8000",
+    "test": "echo \"No tests specified\" && exit 0",
+    "lint": "eslint src/ChatPilot.js",
+    "format": "prettier --write src/ChatPilot.js"
+  },
+  "keywords": [
+    "chat",
+    "widget",
+    "ai",
+    "openai",
+    "gemini",
+    "chatbot",
+    "customer-support",
+    "javascript"
+  ],
+  "author": "ChatPilot Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/chatpilot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/chatpilot/issues"
+  },
+  "homepage": "https://github.com/your-username/chatpilot#readme",
+  "files": [
+    "src/",
+    "styles/",
+    "dist/",
+    "README.md"
+  ],
+  "devDependencies": {
+    "uglify-js": "^3.17.4",
+    "eslint": "^8.0.0",
+    "prettier": "^2.8.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+} 
