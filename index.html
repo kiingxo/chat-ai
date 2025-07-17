@@ -1,49 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatPilot - AI-Powered Customer Service Solution</title>
-    <meta http-equiv="refresh" content="0; url=./docs/">
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        .loading {
-            text-align: center;
-        }
-        .spinner {
-            border: 4px solid rgba(255,255,255,0.3);
-            border-radius: 50%;
-            border-top: 4px solid white;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        a {
-            color: white;
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-    <div class="loading">
-        <h1>🚀 ChatPilot</h1>
-        <div class="spinner"></div>
-        <p>Redirecting to demo...</p>
-        <p><a href="./docs/">Click here if not redirected automatically</a></p>
-    </div>
-</body>
-</html> 
+To address the security issue with the API token in your project, it's crucial to ensure that the token is not exposed in the client-side code, such as in `index.html`. Instead, the token should be securely stored on the server-side and accessed through server-side code. Since the `index.html` file doesn't contain any JavaScript or API token directly, I assume the token might be included in a JavaScript file or inline script not shown here. Here's a general approach to secure the API token:
+
+1. **Move API Token to Server-Side**: Ensure the API token is stored on the server-side, not in the client-side code.
+2. **Create a Secure Endpoint**: Implement a server-side endpoint that handles requests requiring the API token.
+3. **Use Environment Variables**: Store the API token in environment variables on the server to prevent exposure in the codebase.
+
+Here's a conceptual code diff to illustrate moving the token handling to the server-side:
+
+```diff
+- // Example of client-side code where API token might be exposed
+- const apiToken = 'YOUR_API_TOKEN'; // Remove this from client-side
+
++ // Server-side code (e.g., Node.js/Express)
++ const express = require('express');
++ const app = express();
++ const fetch = require('node-fetch');
++ require('dotenv').config(); // Use dotenv to manage environment variables
+
++ const API_TOKEN = process.env.API_TOKEN; // Store token in environment variable
+
++ app.get('/api/data', async (req, res) => {
++     try {
++         const response = await fetch('https://api.example.com/data', {
++             headers: { 'Authorization': `Bearer ${API_TOKEN}` }
++         });
++         const data = await response.json();
++         res.json(data);
++     } catch (error) {
++         res.status(500).send('Error fetching data');
++     }
++ });
+
++ app.listen(3000, () => {
++     console.log('Server running on port 3000');
++ });
+```
+
+**Summary**: The API token should be moved to the server-side and accessed through a secure endpoint. Use environment variables to manage sensitive information like API tokens. This approach prevents the token from being exposed in the client-side code.
